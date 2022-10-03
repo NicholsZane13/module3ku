@@ -11,8 +11,8 @@ function writePassword() {
 }
 var allCap = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var noCap = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var specChar = ["~","!","@","#","$","%","^","&","*","(",")","_","+","{","}","|","<",">","/"];
-var numb = ["1","2","3","4","5","6","7","8","9"];
+var specChar = ["~","!","@","#","$","%","^","&","*","(",")","_","+","{","}","|","<",">","/",":",";","[","]","|","'","*","?"];
+var numb = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26"];
 var passwordArray = [];
 
 
@@ -37,22 +37,35 @@ function generatePassword() {
 
   if (lowers === true) {
     var p1Array = passwordArray.concat(noCap);
-  };
+  }
+  else var p1Array = passwordArray;
+
   if (uppers === true) {
     var p2Array = p1Array.concat(allCap);
-  };
+  }
+  else var p2Array = p1Array;
+
   if (numbers === true) {
     var p3Array = p2Array.concat(numb);
-  };
+  }
+  else var p3Array = p2Array;
+
   if (specials === true) {
     var p4Array = p3Array.concat(specChar);
   };
-  function getMultipleRandom(arr, num) {
-    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+
+
+  function randomizeArray(arr, num) {
+    const jumble = [...arr].sort(() => 0.5 - Math.random());
   
-    return shuffled.slice(0, num);
+    return jumble.slice(0, num);
   };
-  console.log(getMultipleRandom(p4Array, length));
+
+  
+  var finalPassword = (randomizeArray(p4Array, length));
+
+  var sikePasswordFinal = (finalPassword.join(""))
+
   /* 
     This way we can use the object keys as variable names directly,
     without having to point to the object name first like this:
@@ -61,6 +74,7 @@ function generatePassword() {
     inputs.lowers
     inputs.uppers, etc.
   */
+ return sikePasswordFinal;
 }
 
 function gatherInput() {
