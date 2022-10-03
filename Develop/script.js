@@ -13,6 +13,7 @@ var allCap = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 var noCap = ["abcdefghijklmnopqrstuvwxyz"];
 var specChar = ["~!@#$%^&*()_+{}|<>/"];
 var numb = [123456789];
+var passwordArray = [];
 
 
 
@@ -70,6 +71,22 @@ function gatherInput() {
     var hasUppers = window.confirm("Include upper-case characters?");
     var hasNumbers = window.confirm("Include numbers?");
     var hasSpecials = window.confirm("Include special characters?");
+
+    if (hasLowers === true) {
+      var p1Array = passwordArray.concat(noCap);
+    };
+    if (hasUppers === true) {
+      var p2Array = p1Array.concat(allCap);
+    };
+    if (hasNumbers === true) {
+      var p3Array = p2Array.concat(numb);
+    };
+    if (hasSpecials === true) {
+      var p4Array = p3Array.concat(specChar);
+    };
+    
+
+
 
     /* Package all of the user's choices into a single object to return */
     return {
